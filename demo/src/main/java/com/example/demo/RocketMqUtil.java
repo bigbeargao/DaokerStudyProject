@@ -16,6 +16,7 @@ import com.alibaba.rocketmq.remoting.exception.RemotingException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -216,7 +217,7 @@ public class RocketMqUtil {
                 public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
                     try {
                         for (MessageExt messageExt : msgs) {
-                            System.out.println(new String(messageExt.getBody(), "UTF-8"));
+                            System.out.println(new String(messageExt.getBody(), StandardCharsets.UTF_8));
                         }
                     } catch (Exception e) {
                     }
